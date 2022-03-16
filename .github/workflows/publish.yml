@@ -29,10 +29,12 @@ jobs:
       # The uses keyword specifies that this step will run v2 of the actions/checkout action. This is an action that checks out your repository onto the runner, allowing you to run scripts or other actions against your code (such as build and test tools). You should use the checkout action any time your workflow will run against the repository's code. $GITHUB_WORKSPACE, so your job can access it.
       - uses: actions/checkout@v2
 
-      - name: Get history and tags for SCM versioning
+      - name: Get history and tags for SCM versioning to work
         run: |
-          git fetch --prune --unshallow --tags
-          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+          git fetch --prune --unshallow
+          git fetch --depth=1 upstream +refs/tags/*:refs/tags/*
+          git describe --tags
+          git describe --tags $(git rev-list --tags --max-count=1)
 
       - name: Build deafrica-tools
         run: |
