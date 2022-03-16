@@ -31,6 +31,7 @@ jobs:
 
       - name: Get history and tags for SCM versioning to work
         run: |
+          git remote add upstream https://github.com/digitalearthafrica/deafrica-sandbox-notebooks.git
           git fetch --prune --unshallow
           git fetch --depth=1 upstream +refs/tags/*:refs/tags/*
           git describe --tags
