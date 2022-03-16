@@ -42,8 +42,6 @@ jobs:
         # uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
         uses: pypa/gh-action-pypi-publish@v1.4.2
         with:
-          # Test PyPI user
-          user: ${{ secrets.TEST_PYPI_USER }}
           # Password for your Test PyPI user or an access token
           password: ${{ secrets.TEST_PYPI_API_TOKEN }}
           repository_url: https://test.pypi.org/legacy/
