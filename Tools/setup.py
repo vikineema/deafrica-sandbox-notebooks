@@ -55,7 +55,7 @@ EXTRAS = {
 }
 
 # Package meta-data.
-NAME = 'deafrica-tools'
+NAME = 'testing-deafrica-tools'
 DESCRIPTION = 'Functions and algorithms for analysing Digital Earth Africa data.'
 URL = 'https://github.com/digitalearthafrica/deafrica-sandbox-notebooks'
 EMAIL = 'victoria@kartoza.com'
