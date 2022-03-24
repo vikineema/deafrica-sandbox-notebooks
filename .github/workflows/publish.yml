@@ -4,8 +4,8 @@ name: Publish deafrica-tools to TestPyPI
 on:
   # Triggers the workflow to run  1) when a push that includes a change to any file in the Tools/ directory and/or a change to this workflow file is made to the publish-deafrica-tools branch or 2) when a release has been published or 3) by clicking the 'Run workflow' button on the Actions tab.
   push:
-    branches:
-      - publish-deafrica-tools
+    tags:
+      - v*
     paths:
       - 'Tools/**'
       - '.github/workflows/publish.yml'
