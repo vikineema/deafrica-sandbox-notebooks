@@ -73,7 +73,7 @@ except FileNotFoundError:
     
 setup_kwargs = {
     'name': NAME,
-    'version': '0.1.4',
+    'version': '0.1.5',
     'description': DESCRIPTION,
     'long_description': long_description,
     'author': AUTHOR,

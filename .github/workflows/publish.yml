@@ -25,6 +25,10 @@ jobs:
     steps:
       # The uses keyword specifies that this step will run v2 of the actions/checkout action. This is an action that checks out your repository onto the runner, allowing you to run scripts or other actions against your code (such as build and test tools). You should use the checkout action any time your workflow will run against the repository's code.
       - uses: actions/checkout@v2
+      - name: Get history and tags for SCM versioning
+        run: |
+          git fetch --prune --unshallow
+          git fetch --depth=1 origin +refs/tags/*:refs/tags/*
 
       - name: Build deafrica-tools
         # The run keyword tells the job to execute a command on the runner.
