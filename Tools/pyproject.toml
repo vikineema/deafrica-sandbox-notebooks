@@ -1,4 +1,20 @@
-# pyproject.toml tells “frontend” build tools like pip and build what “backend” tool to use to create distribution packages for your project. 
+# pyproject.toml tells “frontend” build tools like pip and build what “backend” tool to use to create distribution packages for your project.
+
+# using poetry for dependency management and packaging
+[tool.poetry]
+name = "deafrica-tools"
+version = "1.0.5"
+description = "Functions and algorithms for analysing Digital Earth Africa data."
+authors = ["Digital Earth Africa <systems@digitalearthafrica.org>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [{include = "deafrica_tools"}]
+homepage = "https://github.com/digitalearthafrica/deafrica-sandbox-notebooks"
+repository = "https://github.com/digitalearthafrica/deafrica-sandbox-notebooks"
+documentation = "https://docs.digitalearthafrica.org/fr/latest/sandbox/notebooks/Tools/index.html"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/digitalearthafrica/deafrica-sandbox-notebooks/issues"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
