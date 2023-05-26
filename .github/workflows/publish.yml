@@ -30,6 +30,10 @@ jobs:
     # Specifies the runner environment the job will run in. 
     # Configure the job to run on the latest version of an Ubuntu Linux runner.
     runs-on: ubuntu-latest
+    # Set default working directory for all run steps in the job
+    defaults:
+      run:
+        working-directory: ./Tools
     # Groups together all the steps that run in the job. 
     # A job contains a sequence of tasks called steps. 
     # Each item nested under this section is a separate action or shell script. 
@@ -50,8 +54,6 @@ jobs:
         run: curl -sSL https://install.python-poetry.org | python3 -
       - name: Add Poetry to path
         run: echo "${HOME}/.poetry/bin" >> $GITHUB_PATH
-      - name: cd into the Tools directory of the respository.
-        run: cd Tools/
       - name: Install venv
         run: poetry install
       - name: Configure the repository to publish to
