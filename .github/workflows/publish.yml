@@ -50,7 +50,7 @@ jobs:
           # The version of poetry to install
           poetry_version: "==1.5.0" # (PIP version specifier syntax)
           # Required API token to authenticate when uploading package to PyPI
-          pypi_token: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          pypi_token: ${{secrets.TEST_PYPI_API_TOKEN}}
           # Name of a repository where the package will be uploaded.
           repository_name: "testpypi"
           # The URL where the package will be uploaded.
