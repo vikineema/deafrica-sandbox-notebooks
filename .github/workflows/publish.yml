@@ -40,21 +40,24 @@ jobs:
       # You should use the checkout action any time your workflow will run against the repository's code.
       - name: Checkout the digitalearthafrica/deafrica-sandbox-notebooks repository
         uses: actions/checkout@v3
-      # Build package distributions from source and publish to Test PyPI
-      - name: Build and Publish distribution 📦 to Test PyPI
-        # You may pin to the exact commit or the version of the action.
-        uses: JRubics/poetry-publish@v1.17
+      # This action sets up a Python environment for use in the workflow by installing and activating Python 3.10.
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v4
         with:
-          # The version of python to install
-          python_version: "3.10.6"
-          # The version of poetry to install
-          poetry_version: "==1.5.0" # (PIP version specifier syntax)
-          # Required API token to authenticate when uploading package to PyPI
-          pypi_token: ${{secrets.TEST_PYPI_API_TOKEN}}
-          # Name of a repository where the package will be uploaded.
-          repository_name: "testpypi"
-          # The URL where the package will be uploaded.
-          repository_url: "https://test.pypi.org/legacy/"
-          # An optional subdirectory path if poetry package 
-          # doesn't reside in the main workflow directory
-          package_directory: "Tools"
+          python-version: "3.10" # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified.
+      - name: Install Poetry
+        run: curl -sSL https://install.python-poetry.org | python3 -
+      - name: Add Poetry to path
+        run: echo "${HOME}/.poetry/bin" >> $GITHUB_PATH
+      - name: Install venv
+        run: poetry install
+      - name: Configure the repository to publish to
+        run: poetry config repositories.testpypi https://test.pypi.org/legacy/
+      - name: Configure the credentials for the repository
+        run: poetry config pypi-token.testpypi ${{ secrets.TEST_PYPI_API_TOKEN }}
+      - name: Build the source (sdist) and wheel archives
+        run: poetry build
+      - name: Publish package previously built to the remote repository
+        run: poetry publish --repository testpypi
+   
