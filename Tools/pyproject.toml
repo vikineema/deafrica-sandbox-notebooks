@@ -13,7 +13,7 @@ authors = ["Digital Earth Africa <systems@digitalearthafrica.org>"]
 readme = "README.md"
 homepage = "https://github.com/digitalearthafrica/deafrica-sandbox-notebooks"
 repository = "https://github.com/digitalearthafrica/deafrica-sandbox-notebooks"
-documentation = "https://docs.digitalearthafrica.org/fr/latest/sandbox/notebooks/Tools/index.html"
+documentation = "https://docs.digitalearthafrica.org/en/latest/sandbox/notebooks/Tools/index.html"
 packages = [{include = "deafrica_tools"}]
 
 [tool.poetry.urls]
