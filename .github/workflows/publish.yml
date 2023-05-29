@@ -53,6 +53,7 @@ jobs:
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified.
       - name: Install GDAL development headers
         run: |
+          sudo apt-add-repository ppa:ubuntugis/ubuntugis-unstable
           sudo apt-get update
           sudo apt-get libgdal-dev
       - name: Install Poetry
