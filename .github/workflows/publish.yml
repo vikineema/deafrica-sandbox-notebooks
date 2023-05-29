@@ -57,15 +57,17 @@ jobs:
           sudo apt-get update
           sudo apt-get install libgdal-dev
       - name: Install Poetry
-        run: curl -sSL https://install.python-poetry.org | python3 - --version 1.5.0
-      - name: Configure the repository to publish to
-        run: poetry config repositories.testpypi https://test.pypi.org/legacy/
-      - name: Configure the credentials for the repository
-        run: poetry config pypi-token.testpypi ${{ secrets.TEST_PYPI_API_TOKEN }}
+        run: |
+          curl -sSL https://install.python-poetry.org | python3 - --version 1.5.0
+          poetry --version
       - name: Build the source (sdist) and wheel archives
         run: poetry build --verbose
-      - name: Read the pyproject.toml, resolves and install the dependencies
+      - name: Read the pyproject.toml, resolve and install the dependencies
         run: poetry install --no-root --verbose
+      - name: Configure the repository to publish to
+        run: poetry config repositories.testpypi https://test.pypi.org/legacy/
+      - name: Configure the credentials for the repository to publish to
+        run: poetry config pypi-token.testpypi ${{ secrets.TEST_PYPI_API_TOKEN }}
       - name: Publish distribution 📦 to Test PyPI
         run: poetry publish --repository testpypi
     
