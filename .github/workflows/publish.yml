@@ -2,17 +2,18 @@
 # GitHub displays the names of your workflows on your repository's actions page. 
 ##name: Publish deafrica-tools to PyPI
 name: Publish deafrica-tools to Test PyPI
-# Specifies the triggers for this workflow. 
+# Define which events can cause the workflow to run. 
 on:
   # Triggers the workflow to run  when 
-  # 1) a push occurs on the main branch that includes changes to any file in the Tools/ directory,
-  # 2) when a release has been published or 
+  # 1) a push is made to the main branch that includes changes to any file in the `Tools/` directory,
+  # 2) when a release has been published' or 
   # 3) by clicking the 'Run workflow' button on the Actions tab.
   push:
     branches:
       #- main
       - test-publishing-using-poetry
     paths:
+      - '.github/**'
       - 'Tools/**'
   release:
     types: [published]
@@ -54,7 +55,7 @@ jobs:
         run: |
           sudo add-apt-repository ppa:ubuntugis/ppa
           sudo apt-get update
-          sudo apt-get update
+          sudo apt install build-essential
           sudo apt-get install gdal-bin
           sudo apt-get install libgdal-dev
           export CPLUS_INCLUDE_PATH=/usr/include/gdal
