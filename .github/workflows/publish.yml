@@ -53,8 +53,8 @@ jobs:
           architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified.
       - name: Install GDAL development headers
         run: |
-          sudo apt update
-          sudo apt libgdal-dev
+          sudo apt-get update
+          sudo apt-get libgdal-dev
       - name: Install Poetry
         run: curl -sSL https://install.python-poetry.org | python3 - --version 1.5.0
       - name: Configure the repository to publish to
